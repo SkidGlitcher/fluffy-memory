@@ -1,0 +1,39 @@
+add_namespace = ai_advisor
+
+country_event = {
+    id = ai_advisor.1
+    title = ai_advisor.1.t
+    desc = ai_advisor.1.d
+    is_triggered_only = yes
+
+    immediate = {
+        ai_advisor_export_state = yes
+    }
+
+    option = {
+        name = ai_advisor.1.a
+        custom_effect_tooltip = ai_advisor_wait_tt
+    }
+}
+
+country_event = {
+    id = ai_advisor.2
+    title = ai_advisor.2.t
+    desc = AI_ADVISOR_RESPONSE
+    is_triggered_only = yes
+
+    option = {
+        name = ai_advisor.2.a
+    }
+}
+
+country_event = {
+    id = ai_advisor.10
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        set_country_flag = ai_advisor_enabled
+        ai_advisor_export_state = yes
+    }
+}

@@ -1,0 +1,92 @@
+ai_advisor_category = {
+
+    ai_advisor_request = {
+        icon = GFX_goal_generic_intelligence_exchange
+        cost = 0
+        visible = { is_ai = no }
+        available = { always = yes }
+        complete_effect = {
+            country_event = { id = ai_advisor.1 }
+        }
+        fire_only_once = no
+        days_remove = 0
+        ai_will_do = { factor = 0 }
+    }
+
+    ai_advisor_export = {
+        icon = GFX_goal_generic_intelligence_exchange
+        cost = 0
+        visible = { is_ai = no }
+        available = { always = yes }
+        complete_effect = {
+            ai_advisor_export_state = yes
+        }
+        fire_only_once = no
+        days_remove = 0
+        ai_will_do = { factor = 0 }
+    }
+
+    ai_advisor_persona_pragmatic = {
+        icon = GFX_goal_generic_neutrality_focus
+        cost = 0
+        visible = { is_ai = no }
+        available = { always = yes }
+        complete_effect = {
+            clr_country_flag = ai_advisor_persona_aggressive
+            clr_country_flag = ai_advisor_persona_diplomatic
+            clr_country_flag = ai_advisor_persona_custom
+            set_country_flag = ai_advisor_persona_pragmatic
+        }
+        fire_only_once = no
+        days_remove = 0
+        ai_will_do = { factor = 0 }
+    }
+
+    ai_advisor_persona_aggressive = {
+        icon = GFX_goal_generic_war_with_germany
+        cost = 0
+        visible = { is_ai = no }
+        available = { always = yes }
+        complete_effect = {
+            clr_country_flag = ai_advisor_persona_pragmatic
+            clr_country_flag = ai_advisor_persona_diplomatic
+            clr_country_flag = ai_advisor_persona_custom
+            set_country_flag = ai_advisor_persona_aggressive
+        }
+        fire_only_once = no
+        days_remove = 0
+        ai_will_do = { factor = 0 }
+    }
+
+    ai_advisor_persona_diplomatic = {
+        icon = GFX_goal_generic_forceful_treaty
+        cost = 0
+        visible = { is_ai = no }
+        available = { always = yes }
+        complete_effect = {
+            clr_country_flag = ai_advisor_persona_pragmatic
+            clr_country_flag = ai_advisor_persona_aggressive
+            clr_country_flag = ai_advisor_persona_custom
+            set_country_flag = ai_advisor_persona_diplomatic
+        }
+        fire_only_once = no
+        days_remove = 0
+        ai_will_do = { factor = 0 }
+    }
+
+    ai_advisor_persona_custom = {
+        icon = GFX_goal_generic_scientific_exchange
+        cost = 0
+        visible = { is_ai = no }
+        available = { always = yes }
+        complete_effect = {
+            clr_country_flag = ai_advisor_persona_pragmatic
+            clr_country_flag = ai_advisor_persona_aggressive
+            clr_country_flag = ai_advisor_persona_diplomatic
+            set_country_flag = ai_advisor_persona_custom
+        }
+        fire_only_once = no
+        days_remove = 0
+        ai_will_do = { factor = 0 }
+    }
+}

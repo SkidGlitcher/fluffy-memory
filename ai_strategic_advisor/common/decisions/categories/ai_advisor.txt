@@ -1,0 +1,5 @@
+ai_advisor_category = {
+    icon = GFX_decision_category_political
+    priority = 100
+    visible = { is_ai = no }
+}

@@ -1,0 +1,57 @@
+ai_advisor_export_state = {
+
+    # ============================================================
+    # COUNTRY
+    # ============================================================
+
+    log = "AI_ADVISOR_STATE|BEGIN"
+
+    log = "AI_ADVISOR_COUNTRY|tag=[ROOT.GetTag]|name=[ROOT.GetName]|leader=[ROOT.GetLeader]|date=[GetDateText]|pp=[?ROOT.political_power]|stability=[?ROOT.stability]|war_support=[?ROOT.war_support]|factories=[?ROOT.num_of_factories]|civ_factories=[?ROOT.num_of_civilian_factories]|mil_factories=[?ROOT.num_of_military_factories]|dockyards=[?ROOT.num_of_naval_factories]|manpower=[ROOT.GetManpower]|faction=[ROOT.GetFactionName]"
+
+    # ============================================================
+    # PERSONA
+    # ============================================================
+
+    if = {
+        limit = { has_country_flag = ai_advisor_persona_aggressive }
+        log = "AI_ADVISOR_PERSONA|aggressive"
+    }
+    else_if = {
+        limit = { has_country_flag = ai_advisor_persona_diplomatic }
+        log = "AI_ADVISOR_PERSONA|diplomatic"
+    }
+    else_if = {
+        limit = { has_country_flag = ai_advisor_persona_custom }
+        log = "AI_ADVISOR_PERSONA|custom"
+    }
+    else = {
+        log = "AI_ADVISOR_PERSONA|pragmatic"
+    }
+
+    # ============================================================
+    # STATES
+    # ============================================================
+
+    every_owned_state = {
+        limit = {
+            is_controlled_by = ROOT
+        }
+
+        log = "AI_ADVISOR_STATE_DATA|id=[THIS.GetID]|name=[THIS.GetName]|owner=[THIS.Owner.GetTag]|controller=[THIS.Controller.GetTag]|factories=[?THIS.num_of_factories]|civ_factories=[?THIS.num_of_civilian_factories]|mil_factories=[?THIS.num_of_military_factories]|dockyards=[?THIS.num_of_naval_factories]"
+    }
+
+    # ============================================================
+    # ENEMIES
+    # ============================================================
+
+    every_enemy_country = {
+
+        log = "AI_ADVISOR_ENEMY|tag=[THIS.GetTag]|name=[THIS.GetName]|factories=[?THIS.num_of_factories]|war_support=[?THIS.war_support]|manpower=[THIS.GetManpower]"
+    }
+
+    # ============================================================
+    # END
+    # ============================================================
+
+    log = "AI_ADVISOR_STATE|END"
+}
