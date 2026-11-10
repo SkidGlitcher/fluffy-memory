@@ -94,11 +94,32 @@ try {
     Write-Log "Starting download..." Yellow
 
     $downloadTimer = [System.Diagnostics.Stopwatch]::StartNew()
+Write-Log "Downloading iTunes with Invoke-WebRequest..." Yellow
+Write-Log "URL: $AppleITunesLink" DarkGray
+Write-Log "Output: $itunesInstaller" DarkGray
 
-    (New-Object System.Net.WebClient).DownloadFile(
-        $AppleITunesLink,
-        $itunesInstaller
-    )
+$downloadTimer = [System.Diagnostics.Stopwatch]::StartNew()
+
+try {
+    Invoke-WebRequest `
+        -Uri $AppleITunesLink `
+        -OutFile $itunesInstaller `
+        -UseBasicParsing `
+        -TimeoutSec 120 `
+        -MaximumRedirection 10 `
+        -Verbose
+
+    $downloadTimer.Stop()
+
+    Write-Log "Download completed in $([math]::Round($downloadTimer.Elapsed.TotalSeconds, 2)) seconds." Green
+}
+catch {
+    $downloadTimer.Stop()
+
+    Write-Log "iTunes download failed after $([math]::Round($downloadTimer.Elapsed.TotalSeconds, 2)) seconds." Red
+    Write-Log "Exception: $($_.Exception.Message)" Red
+    throw
+}
 
     $downloadTimer.Stop()
 
